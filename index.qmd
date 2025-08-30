@@ -1,3 +1,11 @@
+::: {.content-visible when-format="revealjs"}
+## Downloads
+
+- Download [these slides as a PDF](CSCAR_slide_deck.pdf)
+
+- Download a [CSCAR informative one-page](CSCAR_in_one_page.docx)
+:::
+
 ## $2,328$ consults across diverse academic units
 ```{r slide1, echo=FALSE}
 library(ggplot2)

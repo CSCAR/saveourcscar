@@ -8,11 +8,12 @@ index.html: index.qmd _quarto.yml
 	quarto render index.qmd --to revealjs
 
 .PHONY: onepage
+onepage:
 	cp CSCAR_in_one_page.docx docs/
 
 .PHONY: clean
 clean:
-	rm -f index.pdf index.html
+	rm -rf docs/*
 
 .PHONY: open
 open:
