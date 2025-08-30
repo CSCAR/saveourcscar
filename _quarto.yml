@@ -1,5 +1,6 @@
 project:
   type: default
+  output-dir: docs
 
 title: "CSCAR consults in 2024"
 author: "CSCAR staff"

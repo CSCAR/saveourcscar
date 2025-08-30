@@ -128,8 +128,6 @@ ggplot(respect,aes(x=Respected,y=Consults,fill=Consults))+
 
 - "So glad to have CSCAR at UM!"
 
-- "Had no idea CSCAR existed until last week. Great resource for those without a stats background."
-
 ## Testimonials part 2
 - "CSCAR has been an invaluable resource to me, my colleagues, and our many research rotators over the years. As research manager for the UofM Cancer Genetics program, meeting with your team is one of the first things I recommend those embarking on a new project.  Your team has been involved in shaping our studies, ensuring we are using the most up-to-date and sound methodology, and consulting on a wide range of matters from initial design, coding questions, interpreting results, manuscript preparation, responding to reviewer critiques, and more."
 
@@ -140,3 +138,5 @@ ggplot(respect,aes(x=Respected,y=Consults,fill=Consults))+
 
 ## Testimonials part 4
 - "We were running an NSF-funded study with a fractional factorial design.  A CSCAR consultant identified a key statistical error that we missed.  This was something that nobody on my team, and none of the NSF peer reviewers, had picked up on.  The CSCAR consultant saved us a lot of time and money by preventing a major mistake that threatened the viability of the entire project.  We couldn't be more thankful for CSCAR’s expertise."
+
+- "Had no idea CSCAR existed until last week. Great resource for those without a stats background."
