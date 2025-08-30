@@ -1,0 +1,155 @@
+---
+title: "CSCAR consults in 2024"
+author: "CSCAR staff"
+date: "2025-8-11"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## $2,328$ consults across diverse academic units
+```{r slide1, echo=FALSE}
+library(ggplot2)
+units = data.frame(Unit = c("Med","LSA Soc","LSA Other",
+                            "SPH","SEAS","COE","SI","Health","Kinesiology","Dentistry"),
+                   Consults=c(387,215,173,167,126,123,117,102,70,61))
+units$Unit = factor(units$Unit,levels=units$Unit)
+units$Pct = paste0(round(100*units$Consults/2328),"%")
+ggplot(units,aes(x=Unit,y=Consults,fill=Consults))+
+  theme(plot.caption = element_text(hjust = 0)) + 
+  theme_classic(base_size=16) +
+  geom_bar(stat="identity") +
+  scale_fill_gradient(low="light blue",high="dark blue",guide="none") +
+  geom_text(aes(label=Pct), vjust=-0.5) +
+  labs(caption="Data from Jan - Nov 2024. Not included in the graph are 485 consults from other units and 469 consults with unknown unit.")
+```
+
+## Most consults are for students, but faculty, staff, and postdocs are well-represented
+```{r slide2, echo=FALSE}
+user_type = data.frame(Type = c("Student","Faculty","Staff",
+                            "Postdoc","Other or Missing"),
+                   Consults=c(1541,298,171,133,185))
+user_type$Type = factor(user_type$Type,levels=user_type$Type)
+user_type$Pct = paste0(round(100*user_type$Consults/2328),"%")
+ggplot(user_type,aes(x=Type,y=Consults,fill=Consults))+
+  theme(plot.caption = element_text(hjust = 0)) + 
+  theme_classic(base_size=16) + 
+  geom_bar(stat="identity") +
+  scale_y_continuous(breaks=seq(0,1600,100),limits=c(0,1600)) + 
+  scale_fill_gradient(low="light blue",high="dark blue",guide="none") +
+  geom_text(aes(label=Pct), vjust=-0.5) +
+  labs(caption="Data from Jan - Nov 2024.")
+```
+
+## Most student consults are for doctoral students
+```{r slide3, echo=FALSE}
+student_type = data.frame(Type = c("Doctoral","Masters","Undergraduate"),
+                   Consults=c(1024,341,176))
+student_type$Type = factor(student_type$Type,levels=student_type$Type)
+student_type$Pct = paste0(round(100*student_type$Consults/1541),"%")
+ggplot(student_type,aes(x=Type,y=Consults,fill=Consults))+
+  theme(plot.caption = element_text(hjust = 0)) + 
+  theme_classic(base_size=16) + 
+  geom_bar(stat="identity") +
+  scale_y_continuous(breaks=seq(0,1100,100),limits=c(0,1100)) +
+  scale_fill_gradient(low="light blue",high="dark blue",guide="none") +
+  geom_text(aes(label=Pct), vjust=-0.5) +
+  labs(caption="Data from Jan - Nov 2024. Percentages are out of total student consults.")
+```
+
+## A plurality of faculty consults are for assistant professors
+```{r slide4, echo=FALSE}
+faculty_type = data.frame(Type = c("Assistant","Associate","Full","Research Inv",
+                                   "Emeritus","Unknown"),
+                   Consults=c(114,74,67,18,5,20))
+faculty_type$Type = factor(faculty_type$Type,levels=faculty_type$Type)
+faculty_type$Pct = paste0(round(100*faculty_type$Consults/298),"%")
+ggplot(faculty_type,aes(x=Type,y=Consults,fill=Consults))+
+  theme(plot.caption = element_text(hjust = 0)) + 
+  theme_classic(base_size=16) + 
+  geom_bar(stat="identity") +
+  scale_y_continuous(breaks=seq(0,120,10),limits=c(0,120)) +
+  scale_fill_gradient(low="light blue",high="dark blue",guide="none") +
+  geom_text(aes(label=Pct), vjust=-0.5) +
+  labs(caption="Data from Jan - Nov 2024. Percentages are out of total faculty consults.")
+```
+
+## A plurality of consult types are for repeat users
+```{r slide5, echo=FALSE,message=FALSE,warning=FALSE}
+library(dplyr)
+consult_type = data.frame(Type = c("Ongoing help","Start analysis","Software",
+                                   "Research and analytic plan design",
+                                   "Interpretation/presentation","Analysis review",
+                                   "Power/sample size", "Other (including ArcGIS)",
+                                   "Visualization"),
+                   Consults=c(606,332,274,141,110,104,81,64,18))
+consult_type = arrange(consult_type,Consults)
+consult_type$Type = factor(consult_type$Type,levels=consult_type$Type)
+consult_type$Pct = paste0(round(100*consult_type$Consults/sum(consult_type$Consults)),"%")
+ggplot(consult_type,aes(x=Type,y=Consults,fill=Consults))+
+  theme(plot.caption = element_text(hjust = 0)) + 
+  theme_classic(base_size=16) + 
+  geom_bar(stat="identity") +
+  coord_flip() + 
+  scale_y_continuous(breaks=seq(0,650,50),limits=c(0,650)) +
+  scale_fill_gradient(low="light blue",high="dark blue",guide="none") +
+  geom_text(aes(label=Pct), hjust=-0.5) +
+  labs(caption="Data from Jan - Nov 2024. Percentages are out of 1,730 consults with consult type data.")
+```
+
+## Most users are highly satisfied with the service
+```{r slide6, echo=FALSE,message=FALSE,warning=FALSE}
+satisfaction = data.frame(Rating = c("Highly satisfied","Satisfied","Neutral",
+                                   "Dissatisfied","Highly dissatisfied"),
+                   Consults=c(1048,55,12,10,12))
+satisfaction$Rating = factor(satisfaction$Rating,levels=satisfaction$Rating)
+satisfaction$Pct = paste0(round(100*satisfaction$Consults/sum(satisfaction$Consults)),"%")
+ggplot(satisfaction,aes(x=Rating,y=Consults,fill=Consults))+
+  theme(plot.caption = element_text(hjust = 0)) + 
+  theme_classic(base_size=16) + 
+  geom_bar(stat="identity") +
+  scale_y_continuous(breaks=seq(0,1100,50),limits=c(0,1100)) +
+  scale_fill_gradient(low="light blue",high="dark blue",guide="none") +
+  geom_text(aes(label=Pct), vjust=-0.5) +
+  labs(caption="Data since January 2022. Percentages are out of 1,137 consults with ratings data.")
+```
+
+## Most users feel respected when using the service
+```{r slide7, echo=FALSE,message=FALSE,warning=FALSE}
+respect = data.frame(Respected = c("Yes","No"),
+                   Consults=c(135,4))
+respect$Respected = factor(respect$Respected,levels=respect$Respected)
+respect$Pct = paste0(round(100*respect$Consults/sum(respect$Consults)),"%")
+ggplot(respect,aes(x=Respected,y=Consults,fill=Consults))+
+  theme(plot.caption = element_text(hjust = 0)) + 
+  theme_classic(base_size=16) + 
+  geom_bar(stat="identity") +
+  scale_y_continuous(breaks=seq(0,150,10),limits=c(0,150)) +
+  scale_fill_gradient(low="light blue",high="dark blue",guide="none") +
+  geom_text(aes(label=Pct), vjust=-0.5) +
+  labs(caption="Data since December 2024. Percentages are out of 139 consults with respect data.")
+```
+
+## Testimonials part 1
+- "I have found CSCAR to be immensely helpful for several projects and they are a valuable part of the institution." 
+
+- "This is a critical service to the University in general and specifically faculty. When I contacted such a service where I completed my PhD, the consultant wanted me to use what she knew and was used to and not what I wanted to measure. I have an approved proposal from my committee and the IRB and was not changing it to her comfortability with stats."
+
+- "So glad to have CSCAR at UM!"
+
+- "Had no idea CSCAR existed until last week. Great resource for those without a stats background."
+
+## Testimonials part 2
+- "CSCAR has been an invaluable resource to me, my colleagues, and our many research rotators over the years. As research manager for the UofM Cancer Genetics program, meeting with your team is one of the first things I recommend those embarking on a new project.  Your team has been involved in shaping our studies, ensuring we are using the most up-to-date and sound methodology, and consulting on a wide range of matters from initial design, coding questions, interpreting results, manuscript preparation, responding to reviewer critiques, and more."
+
+## Testimonials part 3
+- "When speaking with prospective clinicians interviewing at the U, I often highlight CSCAR as an example of the supportive research infrastructure UofM offers. The ability for clinicians to partake in research is one of the selling points of our institution and what gives it a competitive edge. Removing this critical support is a huge loss."
+
+- "...I know the dismantling of CSCAR will massively impact research quality, particularly by those who are not as stats oriented and depend on CSCAR for their services. Additionally, I have attended one of CSCAR's stats trainings during my first year and I know that many other people have benefitted, as well."
+
+## Testimonials part 4
+- "We were running an NSF-funded study with a fractional factorial design.  A CSCAR consultant identified a key statistical error that we missed.  This was something that nobody on my team, and none of the NSF peer reviewers, had picked up on.  The CSCAR consultant saved us a lot of time and money by preventing a major mistake that threatened the viability of the entire project.  We couldn't be more thankful for CSCAR’s expertise."
