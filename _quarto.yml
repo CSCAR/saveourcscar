@@ -1,0 +1,15 @@
+project:
+  type: default
+
+title: "CSCAR consults in 2024"
+author: "CSCAR staff"
+date: "2025-8-11"
+
+format:
+  beamer-pdf: default
+
+  revealjs:
+    theme: [default, custom.scss]
+    echo: false
+    transition: none
+    slide-number: true
