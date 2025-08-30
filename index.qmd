@@ -6,7 +6,7 @@
 - Download a [CSCAR informative one-page](CSCAR_in_one_page.docx)
 :::
 
-## $2,328$ consults across diverse academic units
+## 2,328 consults across diverse academic units
 ```{r slide1, echo=FALSE}
 library(ggplot2)
 units = data.frame(Unit = c("Med","LSA Soc","LSA Other",

@@ -17,4 +17,4 @@ clean:
 
 .PHONY: open
 open:
-	open index.html
+	open docs/index.html
